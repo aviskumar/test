@@ -1,0 +1,28 @@
+<script>
+    function init() {
+        const protData = {
+            "org.w3.clearkey": {
+                "clearkeys": {
+                    "4a5191838da17a2ab771f4258fad347f": "54b7a084437459368eed07d182ad644c"
+                }
+            }
+        };
+        var video,
+            player,
+            url = "https://aba5sdmaaaaaaaammj2q5nkaoee4b.otte.live.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/l2xzhgmjur/out/v1/fe9782633a364a6a84c9410f26d9b2c4/cenc.mpd";
+
+        video = document.querySelector("video");
+        player = dashjs.MediaPlayer().create();
+        player.initialize(video, url, true);
+        player.setProtectionData(protData);
+    }
+    function check() {
+        if (location.protocol === 'http:' && location.hostname !== 'localhost') {
+            var out = 'This page has been loaded under http. This might result in the EME APIs not being available to the player and any DRM-protected content will fail to play. ' +
+                'If you wish to test manifest URLs that require EME support, then <a href=\'https:' + window.location.href.substring(window.location.protocol.length) + '\'>reload this page under https</a>.'
+            var div = document.getElementById('http-warning');
+            div.innerHTML = out;
+            div.style.display = ''
+        }
+    }
+</script>
